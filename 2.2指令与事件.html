@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="show">显示这段文本</p>
+        <a v-bind:href="url">链接</a>
+        <img :src="imageUrl" alt="">
+        <!-- <button @click ="handleClose" >点击隐藏</button> -->
+        <button @click ="show =false" >点击隐藏</button>
+    </div>
+    <script>
+        var vm =new Vue({
+            el :'#app',
+            data :{
+                
+                show : true,
+                url :'https://www.baidu.com',
+                imageUrl :  'http://fanlouoss.ronggyuan.com/0ad4d666-753d-48f6-a2e9-173fe680d1f2.png'
+
+            },
+            methods: {
+                // handleClose :function(){
+                //     this.show =false
+                // }
+                init:function(text){
+                    console.log(text)
+                }
+            },
+            mounted() {
+                this.init('在初始化时调用')
+            },
+        });
+        vm.init('通过外部调用')
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="lib/vue.min.js"></script>
+	</head>
+	<body>
+		<!-- {{}} 文本插值表达式 双向绑定数据 -->
+		<!-- <div id="app">
+			{{ date }}
+		</div> -->
+		
+		<!-- v-html 输出一个html  而不是一个解释后的文本 -->
+		<!-- <h4 id="app">
+			<span v-html ="link"></span>
+		</h4> -->
+		<div id="app">
+			{{ number/10 }}
+			{{isOk ? '确定' : '取消'}}
+			{{text.split(',').reverse().join(',')}}
+		</div>
+		<script>
+			var vm =new Vue({
+				el : '#app',
+				data :{
+					date :new Date(),
+					link : '<a href ="#">这是一个链接</a>',
+					number :100,
+					isOk :false ,
+					text : '123,456'
+				},
+				// mounted :function(){
+				// 	var _this =this ;
+				// 	this.timer =setInterval(function(){
+				// 		_this.date =new Date(); //修改数据date
+						
+				// 	},1000)
+				// },
+				// beforeDestroy  : function(){
+				// 	if(this.timer){
+				// 		clearInterval(this.timer) //在vue实例销毁前,消除我们的定时器
+				// 	}
+				// }
+			})
+		</script>
+	</body>
+</html>

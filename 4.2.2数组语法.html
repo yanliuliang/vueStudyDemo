@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div :class="[activeCls ,errorCls]"></div> -->
+        <div :class="classes"></div>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                activeCls : 'active',
+                errorCls : 'error',
+                size :"large",
+                disabled :true
+            },
+             methods: {
+
+            },
+            computed:{
+                classed :function(){
+                    return [
+                        'btn',
+                        {
+                            ['btn-'+this.size] :this.size !== '',
+                            ['btn-disabled'] :this.disabled
+                        }
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

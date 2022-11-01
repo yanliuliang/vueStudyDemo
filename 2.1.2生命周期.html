@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+
+
+	</head>
+	<body>
+		<script src="lib/vue.min.js"></script>
+		<div id="app"></div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+
+				},
+				methods: {
+
+				},
+				read: function() {
+					console.log('DOM加载完成')
+				},
+				created: function() {
+					console.log('示例创建完成')
+				},
+				mounted: function() {
+					console.log('el挂载到示例上去调用')
+				},
+				beforeDestory: function() {
+					console.log('示例销毁前调用')
+				}
+
+			});
+		</script>
+	</body>
+</html>
