@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <p v-if="status === 1">当status为1时显示该行</p>
+        <p v-else-if="status ===2">当status为2时显示该行</p>
+        <p v-else>否则显示改行</p> -->
+
+        <!-- <template v-if="status ===1">
+            <p>这是一段文本</p>
+            <p>这是一段文本</p>
+            <p>这是一段文本</p>
+        </template> -->
+
+        <template v-if="type ==='name' " >
+            <label>用户名</label>
+            <input placeholder="输入用户名" key="name-input">
+        </template>
+        <template v-else>
+            <label>邮箱:</label>
+            <input placeholder="输入邮箱" key="main-input">
+        </template>
+        <button @click="handleToggleClick">切换输入类型</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                status: 1,
+                type: 'name',
+            },
+            methods: {
+                handleToggleClick: function () {
+                    this.type = this.type === 'name' ? 'mail' : 'name'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
