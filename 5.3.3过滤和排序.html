@@ -12,39 +12,18 @@
 </style>
 
 <body>
-    <!-- <div id='app'>
-        <li v-for="book in books">{{book.name}}</li>
-    </div> -->
-
-    <!-- <div id="app">
+    <div id="app">
         <ul>
-            <template v-for="book in books">
+            <template v-for="book in sortedBooks">
                 <li>书名:{{book.name}}</li>
                 <li>作者:{{book.author}}</li>
             </template>
         </ul>
-    </div> -->
-
-    <!-- <div id="app">
-        <ul>
-            <li v-for="(value,key,index) in user">
-                {{index}} - {{key}} : {{value}}
-            </li>
-        </ul>
-    </div> -->
-
-    <div id="app">
-        <span v-for="n in 10">{{n}}</span>
     </div>
     <script>
         var vm = new Vue({
             el: '#app',
             data: {
-                // books: [
-                //     { name: '<vue.js实战>' },
-                //     { name: '《JavaScripe语言精粹》' },
-                //     { name: '<JAVAScrpte高级程序设计>' }
-                // ]
                 books: [
                     {
                         name: '<vue.js实战>',
@@ -55,14 +34,21 @@
                         author: 'author2'
                     },
                     {
-                        name: 'javaScript高级程序设计',
+                        name: 'JavaScript高级程序设计',
                         author: 'author3'
                     }
                 ],
-                user: {
-                    name: 'Aresn',
-                    gender: '男',
-                    age: 26
+            },
+            computed:{
+                filterBooks:function(){
+                    return this.books.filter(function(book){
+                        return book.name.match(/JavaScript/)
+                    })
+                },
+                sortedBooks:function(){
+                    return this.books.sort(function(a,b){
+                        return a.name.length < b.name.length
+                    })
                 }
             },
             methods: {

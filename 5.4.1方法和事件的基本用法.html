@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='lib/vue.min.js'></script>
+</head>
+<style>
+</style>
+
+<body>
+    <div id='app'>
+        <!-- 点击次数:{{counter}}
+        <button @click="counter++">+1</button>
+        <button @click="handleAdd()">+1</button>
+        <button @click="handleAdd(10)">+10</button> -->
+        <a href="http://www.baidu.com" @click="handleClick('禁止打开',$event)">打开链接</a>
+        <!-- 阻止单击事件冒泡 -->
+        <a @click.stop="handle"></a>
+        <!-- 提交事件不再重载页面 -->
+        <form @submit.prevent="handle"></form>
+        <!-- 修饰符可以串联 -->
+        <a @click.stop.prevent="handle"></a>
+        <!-- 只有修饰符 -->
+        <form @submit.prevent></form>
+        <!-- 添加事件在该元素本身(而不是子元素)触发时触发回调 -->
+        <div @click.self="handle"></div>
+        <!-- 只触发一次,组件同样适用 -->
+        <div @click.once="handle"></div>
+        <!-- 只有keycode时13时调用vm.submit -->
+        <input @keyup.13="submit">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                handleAdd: function (count) {
+                    count = count || 1
+                    //this指向当前Vue实例app
+                    this.counter += count
+                },
+                handleClick: function (message, event) {
+                    event.preventDefault();
+                    window.alert(message);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

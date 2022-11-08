@@ -12,39 +12,21 @@
 </style>
 
 <body>
-    <!-- <div id='app'>
-        <li v-for="book in books">{{book.name}}</li>
-    </div> -->
 
-    <!-- <div id="app">
+    <div id="app">
         <ul>
             <template v-for="book in books">
                 <li>书名:{{book.name}}</li>
                 <li>作者:{{book.author}}</li>
             </template>
         </ul>
-    </div> -->
-
-    <!-- <div id="app">
-        <ul>
-            <li v-for="(value,key,index) in user">
-                {{index}} - {{key}} : {{value}}
-            </li>
-        </ul>
-    </div> -->
-
-    <div id="app">
-        <span v-for="n in 10">{{n}}</span>
     </div>
+
     <script>
         var vm = new Vue({
             el: '#app',
             data: {
-                // books: [
-                //     { name: '<vue.js实战>' },
-                //     { name: '《JavaScripe语言精粹》' },
-                //     { name: '<JAVAScrpte高级程序设计>' }
-                // ]
+               
                 books: [
                     {
                         name: '<vue.js实战>',
@@ -59,14 +41,28 @@
                         author: 'author3'
                     }
                 ],
-                user: {
-                    name: 'Aresn',
-                    gender: '男',
-                    age: 26
-                }
+               
             },
             methods: {
+              addSome:function(){
+                vm.books.push({
+                    name:'<CSS解密>',
+                    author : '[希]lea verou'
+                })
+              }
             },
+        });
+        vm.books =vm.books.filters(function(item){
+            return item.name.match(/JavaScript/);
+        })
+        Vue.set(vm.books,3 ,{
+            name:'<CSS揭秘>',
+            author :'[希]Lea Verou'
+        })
+        // 如果是在webpack中使用组件化的方式（进阶篇中将介绍），默认是没有导入Vue的，这时可以使用$set
+        this.$set(vm.books,3,{
+            name:'<CSS揭秘>',
+            author :'[希]Lea Verson'
         })
     </script>
 </body>
